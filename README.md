@@ -8,7 +8,7 @@
   <a href="https://essentialkaos.com/ekol"><img src="https://gh.kaos.st/ekol.svg"></a>
 </p>
 
-<p align="center"><a href="#installation">Installation</a> • <a href="#build-status">Build Status</a> • <a href="#license">License</a></p>
+<p align="center"><a href="#installation">Installation</a> • <a href="#zabbix-version-support">Zabbix version support</a> • <a href="#build-status">Build Status</a> • <a href="#license">License</a></p>
 
 <br/>
 
@@ -22,17 +22,26 @@ Before the initial install allows git to use redirects for [pkg.re](https://gith
 git config --global http.https://pkg.re.followRedirects true
 ```
 
-For install, do:
+Make sure you have a working Go 1.11+ workspace (_[instructions](https://golang.org/doc/install)_), then:
 
 ```
 go get pkg.re/essentialkaos/zabbix.v1
 ```
 
-For update to latest stable release, do:
+For update to the latest stable release, do:
 
 ```
 go get -u pkg.re/essentialkaos/zabbix.v1
 ```
+
+### Zabbix version support
+
+| Zabbix Version | Support            |
+|----------------|--------------------|
+| 1.x            | :x:                |
+| 2.x            | :x:                |
+| 3.x            | :heavy_check_mark: |
+| 4.x            | :heavy_check_mark: |
 
 ### Build Status
 
