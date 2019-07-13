@@ -72,7 +72,7 @@ func (c *Client) Clear() {
 	c.data = nil
 }
 
-// Sends data to Zabbix server
+// Send sends data to Zabbix server
 func (c *Client) Send() (Response, error) {
 	if len(c.data) == 0 {
 		return Response{"nothing to send", 0, 0, 0, 0.0}, nil

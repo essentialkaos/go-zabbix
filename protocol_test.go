@@ -73,6 +73,7 @@ func (s *ZabbixSuite) TestClient(c *C) {
 
 	resp, err := client.Send()
 
+	c.Assert(err, IsNil)
 	c.Assert(resp.Status, Equals, "nothing to send")
 }
 
