@@ -75,7 +75,7 @@ func marshalMetrics(metrics []*Metric) []byte {
 	totalItems := len(metrics)
 
 	buf.WriteString("{")
-	buf.WriteString(`"request":"agent data",`)
+	buf.WriteString(`"request":"sender data",`)
 	buf.WriteString(fmt.Sprintf(`"session":"%s",`, genSessionID()))
 	buf.WriteString(fmt.Sprintf(`"clock":%d,`, now.Unix()))
 	buf.WriteString(fmt.Sprintf(`"ns":%d,`, now.Nanosecond()))
@@ -122,12 +122,10 @@ func genSessionID() string {
 
 // decodeResponse decodes Zabbix server response
 func decodeResponse(resp []byte) (Response, error) {
-	data := strings.Replace(string(resp), "\n", "", -1)
-	data = strings.Trim(data, "{}")
-	data = strings.TrimSpace(data)
+	data := strings.Trim(string(resp), "{}")
 
 	rs := strings.Index(data, `":"`)
-	re := strings.Index(data, `", `)
+	re := strings.Index(data, `","`)
 
 	if rs == -1 || re == -1 || rs+3 >= re {
 		return Response{}, fmt.Errorf("Can't decode response status")

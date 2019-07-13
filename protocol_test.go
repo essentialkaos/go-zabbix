@@ -46,10 +46,7 @@ type ZabbixSuite struct{}
 
 var _ = Suite(&ZabbixSuite{})
 
-var exampleResponse = []byte(`{
-    "response":"success",
-    "info":"processed: 6; failed: 2; total: 8; seconds spent: 0.003571"
-}`)
+var exampleResponse = []byte(`{"response":"success","info":"processed: 6; failed: 2; total: 8; seconds spent: 0.000156"}`)
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 
@@ -100,13 +97,13 @@ func (s *ZabbixSuite) TestEncoder(c *C) {
 
 	payloadSize := binary.LittleEndian.Uint64(payload[5:13])
 
-	c.Assert(payloadSize, Equals, uint64(487))
+	c.Assert(payloadSize, Equals, uint64(488))
 
 	req := &request{}
 	err := json.Unmarshal(payload[13:], req)
 
 	c.Assert(err, IsNil)
-	c.Assert(req.Request, Equals, "agent data")
+	c.Assert(req.Request, Equals, "sender data")
 	c.Assert(req.Data[0].Value, Equals, "8381794")
 }
 
@@ -118,25 +115,33 @@ func (s *ZabbixSuite) TestResponseDecoder(c *C) {
 	c.Assert(resp.Processed, Equals, 6)
 	c.Assert(resp.Failed, Equals, 2)
 	c.Assert(resp.Total, Equals, 8)
-	c.Assert(resp.SecondsSpent, Equals, 0.003571)
+	c.Assert(resp.SecondsSpent, Equals, 0.000156)
 
 	_, err = decodeResponse([]byte(`{EXAMPLE}`))
 
 	c.Assert(err, NotNil)
 
-	_, err = decodeResponse([]byte(`{"":"", ""}`))
+	_, err = decodeResponse([]byte(`{"":"",""}`))
 
 	c.Assert(err, NotNil)
 
-	_, err = decodeResponse([]byte(`{"":"", "":"abcd"}`))
+	_, err = decodeResponse([]byte(`{"":"","":"abcd"}`))
 
 	c.Assert(err, NotNil)
 
-	_, err = decodeResponse([]byte(`":", 0`))
+	_, err = decodeResponse([]byte(`":",0`))
 
 	c.Assert(err, NotNil)
 
-	_, err = decodeResponse([]byte(`":"0", ":"`))
+	_, err = decodeResponse([]byte(`":"0",":"`))
+
+	c.Assert(err, NotNil)
+
+	_, err = decodeResponse([]byte(`{"response":"success","info":"processed:"}`))
+
+	c.Assert(err, NotNil)
+
+	_, _, _, _, err = parseResponseInfo("processed: V; failed: 2; total: 8; seconds spent:")
 
 	c.Assert(err, NotNil)
 
