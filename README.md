@@ -36,12 +36,12 @@ go get -u pkg.re/essentialkaos/zabbix.v1
 
 ### Zabbix version support
 
-| Zabbix Version | Support      |
-|----------------|--------------|
-| `1.x`          | No           |
-| `2.x`          | No           |
-| `3.x`          | Yes (_Full_) |
-| `4.x`          | Yes (_Full_) |
+| Zabbix Version | Support Status |
+|----------------|----------------|
+| `1.x`          | No             |
+| `2.x`          | No             |
+| `3.x`          | Yes (_Full_)   |
+| `4.x`          | Yes (_Full_)   |
 
 ### Build Status
 
