@@ -59,7 +59,7 @@ func (s *ZabbixSuite) TestClient(c *C) {
 	c.Assert(client, IsNil)
 	c.Assert(err, NotNil)
 
-	client, err = NewClient("127.0.0.0:10000", "localhost")
+	client, err = NewClient("127.0.0.0:10051", "localhost")
 
 	c.Assert(client, NotNil)
 	c.Assert(err, IsNil)
@@ -80,7 +80,7 @@ func (s *ZabbixSuite) TestClient(c *C) {
 }
 
 func (s *ZabbixSuite) TestEncoder(c *C) {
-	client, _ := NewClient("127.0.0.0:10000", "localhost")
+	client, _ := NewClient("127.0.0.0:10051", "localhost")
 
 	m1 := client.Add("test1", 8381794)
 	m2 := client.Add("test2", 7.391348924)

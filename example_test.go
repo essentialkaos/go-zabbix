@@ -15,7 +15,7 @@ import (
 // ////////////////////////////////////////////////////////////////////////////////// //
 
 func ExampleNewClient() {
-	client, err := NewClient("127.0.0.1:15000", "localhost")
+	client, err := NewClient("127.0.0.1:10051", "localhost")
 
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
@@ -27,7 +27,7 @@ func ExampleNewClient() {
 }
 
 func ExampleClient_Add() {
-	client, err := NewClient("127.0.0.1:15000", "localhost")
+	client, err := NewClient("127.0.0.1:10051", "localhost")
 
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
@@ -48,7 +48,7 @@ func ExampleClient_Add() {
 }
 
 func ExampleClient_Num() {
-	client, err := NewClient("127.0.0.1:15000", "localhost")
+	client, err := NewClient("127.0.0.1:10051", "localhost")
 
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
@@ -64,7 +64,7 @@ func ExampleClient_Num() {
 }
 
 func ExampleClient_Clear() {
-	client, err := NewClient("127.0.0.1:15000", "localhost")
+	client, err := NewClient("127.0.0.1:10051", "localhost")
 
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
@@ -82,7 +82,7 @@ func ExampleClient_Clear() {
 }
 
 func ExampleClient_Send() {
-	client, err := NewClient("127.0.0.1:15000", "localhost")
+	client, err := NewClient("127.0.0.1:10051", "localhost")
 
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
