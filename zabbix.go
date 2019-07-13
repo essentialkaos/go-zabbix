@@ -18,6 +18,7 @@ import (
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 
+// Client is Zabbix client
 type Client struct {
 	Hostname string
 
@@ -118,6 +119,7 @@ func (c *Client) Send() (Response, error) {
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 
+// connectToServer makes connetion to Zabbix server
 func connectToServer(c *Client) (*net.TCPConn, error) {
 	conn, err := net.DialTCP(c.addr.Network(), nil, c.addr)
 
@@ -128,6 +130,7 @@ func connectToServer(c *Client) (*net.TCPConn, error) {
 	return conn, nil
 }
 
+// readFromConnection reads data fron connection
 func readFromConnection(conn *net.TCPConn, buf []byte, timeout time.Duration) error {
 	if timeout > 0 {
 		conn.SetReadDeadline(time.Now().Add(timeout))
@@ -138,6 +141,7 @@ func readFromConnection(conn *net.TCPConn, buf []byte, timeout time.Duration) er
 	return err
 }
 
+// writeToConnection writes data into connection
 func writeToConnection(conn *net.TCPConn, data []byte, timeout time.Duration) error {
 	if timeout > 0 {
 		conn.SetWriteDeadline(time.Now().Add(timeout))
@@ -148,6 +152,7 @@ func writeToConnection(conn *net.TCPConn, data []byte, timeout time.Duration) er
 	return err
 }
 
+// formatValue convert value to string
 func formatValue(v interface{}) string {
 	switch t := v.(type) {
 	case float32:
