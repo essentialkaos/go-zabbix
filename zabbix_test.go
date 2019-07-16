@@ -10,9 +10,19 @@ package zabbix
 import (
 	"encoding/binary"
 	"encoding/json"
+	"fmt"
+	"net"
 	"testing"
+	"time"
 
 	. "pkg.re/check.v1"
+)
+
+// ////////////////////////////////////////////////////////////////////////////////// //
+
+const (
+	_PORT_OK    = "50001"
+	_PORT_NOTOK = "50002"
 )
 
 // ////////////////////////////////////////////////////////////////////////////////// //
@@ -50,13 +60,24 @@ var exampleResponse = []byte(`{"response":"success","info":"processed: 6; failed
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 
+func (s *ZabbixSuite) SetUpSuite(c *C) {
+	go runServer(c, _PORT_OK)
+	go runServer(c, _PORT_NOTOK)
+
+	time.Sleep(time.Second)
+}
+
 func (s *ZabbixSuite) TestClient(c *C) {
 	client, err := NewClient("127.0.", "localhost")
 
 	c.Assert(client, IsNil)
 	c.Assert(err, NotNil)
 
-	client, err = NewClient("127.0.0.0:10051", "localhost")
+	client, err = NewClient("127.0.0.1:10051", "localhost")
+
+	client.ConnectTimeout = time.Second
+	client.WriteTimeout = time.Second
+	client.ReadTimeout = time.Second
 
 	c.Assert(client, NotNil)
 	c.Assert(err, IsNil)
@@ -70,15 +91,60 @@ func (s *ZabbixSuite) TestClient(c *C) {
 
 	c.Assert(client.Num(), Equals, 0)
 	c.Assert(client.data, IsNil)
+}
+
+func (s *ZabbixSuite) TestClientSend(c *C) {
+	client, err := NewClient("127.0.0.1:"+_PORT_OK, "localhost")
+
+	c.Assert(client, NotNil)
+	c.Assert(err, IsNil)
+
+	client.ConnectTimeout = time.Second * 3
+	client.WriteTimeout = time.Second * 3
+	client.ReadTimeout = time.Second * 3
 
 	resp, err := client.Send()
 
 	c.Assert(err, IsNil)
 	c.Assert(resp.Status, Equals, "nothing to send")
+
+	client.Add("test1", 8381794)
+
+	resp, err = client.Send()
+
+	c.Assert(resp, NotNil)
+	c.Assert(err, IsNil)
+
+	// ---------
+
+	client, err = NewClient("127.0.0.1:"+_PORT_NOTOK, "localhost")
+
+	c.Assert(client, NotNil)
+	c.Assert(err, IsNil)
+
+	client.Add("test1", 8381794)
+
+	resp, err = client.Send()
+
+	c.Assert(err, NotNil)
+	c.Assert(err.Error(), Equals, "Wrong header format")
+
+	// ---------
+
+	client, err = NewClient("127.0.0.0:"+_PORT_OK, "localhost")
+
+	c.Assert(client, NotNil)
+	c.Assert(err, IsNil)
+
+	client.Add("test1", 8381794)
+
+	resp, err = client.Send()
+
+	c.Assert(err, NotNil)
 }
 
 func (s *ZabbixSuite) TestEncoder(c *C) {
-	client, _ := NewClient("127.0.0.0:10051", "localhost")
+	client, _ := NewClient("127.0.0.1:10051", "localhost")
 
 	m1 := client.Add("test1", 8381794)
 	m2 := client.Add("test2", 7.391348924)
@@ -98,7 +164,7 @@ func (s *ZabbixSuite) TestEncoder(c *C) {
 
 	payloadSize := binary.LittleEndian.Uint64(payload[5:13])
 
-	c.Assert(payloadSize, Equals, uint64(488))
+	c.Assert(payloadSize, Not(Equals), uint64(0))
 
 	req := &request{}
 	err := json.Unmarshal(payload[13:], req)
@@ -161,4 +227,39 @@ func (s *ZabbixSuite) TestResponseDecoder(c *C) {
 	_, _, _, _, err = parseResponseInfo("processed: 6; failed: 2; total: 8; seconds spent: V")
 
 	c.Assert(err, NotNil)
+}
+
+// ////////////////////////////////////////////////////////////////////////////////// //
+
+func runServer(c *C, port string) {
+	server, err := net.Listen("tcp4", "127.0.0.1:"+port)
+
+	if err != nil {
+		c.Fatal(err.Error())
+	}
+
+	defer server.Close()
+
+	fmt.Printf("Fake server started on %s\n", port)
+
+	for {
+		conn, err := server.Accept()
+
+		if err != nil {
+			c.Fatal(err.Error())
+		}
+
+		handleRequest(conn, port)
+	}
+}
+
+func handleRequest(conn net.Conn, port string) {
+	switch port {
+	case _PORT_OK:
+		conn.Write(encodePayload([]byte(exampleResponse)))
+	case _PORT_NOTOK:
+		conn.Write([]byte(`PAYLOAD12345678`))
+	}
+
+	conn.Close()
 }

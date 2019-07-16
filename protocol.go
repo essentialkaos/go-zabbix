@@ -53,18 +53,7 @@ var zabbixHeader = []byte("ZBXD\x01")
 // https://www.zabbix.com/documentation/4.2/manual/appendix/protocols/header_datalen
 func encodeMetrics(metrics []*Metric) []byte {
 	payload := marshalMetrics(metrics)
-	size := uint64(len(payload))
-
-	var buf bytes.Buffer
-
-	sizeBuf := make([]byte, 8)
-	binary.LittleEndian.PutUint64(sizeBuf, size)
-
-	buf.Write(zabbixHeader)
-	buf.Write(sizeBuf)
-	buf.Write(payload)
-
-	return buf.Bytes()
+	return encodePayload(payload)
 }
 
 // marshalMetrics marshals data to JSON object
@@ -118,6 +107,22 @@ func genSessionID() string {
 	}
 
 	return string(result)
+}
+
+// encodePayload encodes payload
+func encodePayload(payload []byte) []byte {
+	size := uint64(len(payload))
+
+	var buf bytes.Buffer
+
+	sizeBuf := make([]byte, 8)
+	binary.LittleEndian.PutUint64(sizeBuf, size)
+
+	buf.Write(zabbixHeader)
+	buf.Write(sizeBuf)
+	buf.Write(payload)
+
+	return buf.Bytes()
 }
 
 // decodeResponse decodes Zabbix server response
