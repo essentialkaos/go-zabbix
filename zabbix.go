@@ -12,6 +12,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"io"
 	"net"
 	"time"
 )
@@ -22,11 +23,13 @@ import (
 type Client struct {
 	Hostname string
 
-	WriteTimeout time.Duration
-	ReadTimeout  time.Duration
+	ConnectTimeout time.Duration
+	WriteTimeout   time.Duration
+	ReadTimeout    time.Duration
 
-	addr *net.TCPAddr
-	data []*Metric
+	dialer *net.Dialer
+	addr   *net.TCPAddr
+	data   []*Metric
 }
 
 // ////////////////////////////////////////////////////////////////////////////////// //
@@ -39,7 +42,9 @@ func NewClient(address, hostname string) (*Client, error) {
 		return nil, err
 	}
 
-	return &Client{addr: addr, Hostname: hostname}, nil
+	dialer := &net.Dialer{Timeout: time.Second * 5}
+
+	return &Client{addr: addr, dialer: dialer, Hostname: hostname}, nil
 }
 
 // ////////////////////////////////////////////////////////////////////////////////// //
@@ -121,13 +126,17 @@ func (c *Client) Send() (Response, error) {
 
 // connectToServer makes connetion to Zabbix server
 func connectToServer(c *Client) (*net.TCPConn, error) {
-	conn, err := net.DialTCP(c.addr.Network(), nil, c.addr)
+	if c.ConnectTimeout > 0 && c.dialer.Timeout != c.ConnectTimeout {
+		c.dialer.Timeout = c.ConnectTimeout
+	}
+
+	conn, err := c.dialer.Dial(c.addr.Network(), c.addr.String())
 
 	if err != nil {
 		return nil, err
 	}
 
-	return conn, nil
+	return conn.(*net.TCPConn), nil
 }
 
 // readFromConnection reads data fron connection
@@ -136,7 +145,7 @@ func readFromConnection(conn *net.TCPConn, buf []byte, timeout time.Duration) er
 		conn.SetReadDeadline(time.Now().Add(timeout))
 	}
 
-	_, err := conn.Read(buf)
+	_, err := io.ReadFull(conn, buf)
 
 	return err
 }
