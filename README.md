@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://godoc.org/pkg.re/essentialkaos/zabbix.v1"><img src="https://godoc.org/pkg.re/essentialkaos/zabbix.v1?status.svg"></a>
   <a href="https://goreportcard.com/report/github.com/essentialkaos/zabbix"><img src="https://goreportcard.com/badge/github.com/essentialkaos/zabbix"></a>
-  <a href="https://travis-ci.org/essentialkaos/zabbix"><img src="https://travis-ci.org/essentialkaos/zabbix.svg"></a>
+  <a href="https://travis-ci.com/essentialkaos/zabbix"><img src="https://travis-ci.com/essentialkaos/zabbix.svg"></a>
   <a href='https://coveralls.io/github/essentialkaos/zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="https://codebeat.co/projects/github-com-essentialkaos-zabbix-master"><img alt="codebeat badge" src="https://codebeat.co/badges/a8a976b8-8fdc-4a65-8a4b-754c284db842" /></a>
   <a href="https://essentialkaos.com/ekol"><img src="https://gh.kaos.st/ekol.svg"></a>
@@ -48,8 +48,8 @@ go get -u pkg.re/essentialkaos/zabbix.v1
 
 | Branch | Status |
 |--------|--------|
-| `master` | [![Build Status](https://travis-ci.org/essentialkaos/zabbix.svg?branch=master)](https://travis-ci.org/essentialkaos/zabbix) |
-| `develop` | [![Build Status](https://travis-ci.org/essentialkaos/zabbix.svg?branch=develop)](https://travis-ci.org/essentialkaos/zabbix) |
+| `master` | [![Build Status](https://travis-ci.com/essentialkaos/zabbix.svg?branch=master)](https://travis-ci.com/essentialkaos/zabbix) |
+| `develop` | [![Build Status](https://travis-ci.com/essentialkaos/zabbix.svg?branch=develop)](https://travis-ci.com/essentialkaos/zabbix) |
 
 ### License
 
