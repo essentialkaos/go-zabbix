@@ -1,13 +1,13 @@
 <p align="center"><a href="#readme"><img src="https://gh.kaos.st/go-zabbix.svg"/></a></p>
 
 <p align="center">
-  <a href="https://godoc.org/pkg.re/essentialkaos/zabbix.v1"><img src="https://godoc.org/pkg.re/essentialkaos/zabbix.v1?status.svg"></a>
+  <a href="https://pkg.go.dev/github.com/essentialkaos/zabbix"><img src="https://pkg.go.dev/badge/github.com/essentialkaos/zabbix" /></a>
   <a href="https://goreportcard.com/report/github.com/essentialkaos/zabbix"><img src="https://goreportcard.com/badge/github.com/essentialkaos/zabbix"></a>
   <a href="https://travis-ci.com/essentialkaos/zabbix"><img src="https://travis-ci.com/essentialkaos/zabbix.svg"></a>
   <a href="https://github.com/essentialkaos/zabbix/actions?query=workflow%3ACodeQL"><img src="https://github.com/essentialkaos/zabbix/workflows/CodeQL/badge.svg" /></a>
   <a href='https://coveralls.io/github/essentialkaos/zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="https://codebeat.co/projects/github-com-essentialkaos-zabbix-master"><img alt="codebeat badge" src="https://codebeat.co/badges/a8a976b8-8fdc-4a65-8a4b-754c284db842" /></a>
-  <a href="https://essentialkaos.com/ekol"><img src="https://gh.kaos.st/ekol.svg"></a>
+  <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
 </p>
 
 <p align="center"><a href="#installation">Installation</a> • <a href="#zabbix-version-support">Zabbix version support</a> • <a href="#build-status">Build Status</a> • <a href="#license">License</a></p>
@@ -54,6 +54,6 @@ go get -u pkg.re/essentialkaos/zabbix.v1
 
 ### License
 
-[EKOL](https://essentialkaos.com/ekol)
+[Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 <p align="center"><a href="https://essentialkaos.com"><img src="https://gh.kaos.st/ekgh.svg"/></a></p>
