@@ -1,12 +1,11 @@
 <p align="center"><a href="#readme"><img src="https://gh.kaos.st/go-zabbix.svg"/></a></p>
 
 <p align="center">
-  <a href="https://pkg.go.dev/github.com/essentialkaos/zabbix"><img src="https://pkg.go.dev/badge/github.com/essentialkaos/zabbix" /></a>
-  <a href="https://goreportcard.com/report/github.com/essentialkaos/zabbix"><img src="https://goreportcard.com/badge/github.com/essentialkaos/zabbix"></a>
-  <a href="https://travis-ci.com/essentialkaos/zabbix"><img src="https://travis-ci.com/essentialkaos/zabbix.svg"></a>
-  <a href="https://github.com/essentialkaos/zabbix/actions?query=workflow%3ACodeQL"><img src="https://github.com/essentialkaos/zabbix/workflows/CodeQL/badge.svg" /></a>
-  <a href='https://coveralls.io/github/essentialkaos/zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
-  <a href="https://codebeat.co/projects/github-com-essentialkaos-zabbix-master"><img alt="codebeat badge" src="https://codebeat.co/badges/a8a976b8-8fdc-4a65-8a4b-754c284db842" /></a>
+  <a href="https://pkg.go.dev/github.com/essentialkaos/go-zabbix"><img src="https://pkg.go.dev/badge/github.com/essentialkaos/go-zabbix" /></a>
+  <a href="https://goreportcard.com/report/github.com/essentialkaos/go-zabbix"><img src="https://goreportcard.com/badge/github.com/essentialkaos/go-zabbix"></a>
+  <a href="https://travis-ci.com/essentialkaos/go-zabbix"><img src="https://travis-ci.com/essentialkaos/go-zabbix.svg"></a>
+  <a href="https://github.com/essentialkaos/go-zabbix/actions?query=workflow%3ACodeQL"><img src="https://github.com/essentialkaos/go-zabbix/workflows/CodeQL/badge.svg" /></a>
+  <a href='https://coveralls.io/github/essentialkaos/go-zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/go-zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
 </p>
 
@@ -27,13 +26,13 @@ git config --global http.https://pkg.re.followRedirects true
 Make sure you have a working Go 1.12+ workspace (_[instructions](https://golang.org/doc/install)_), then:
 
 ```
-go get pkg.re/essentialkaos/zabbix.v1
+go get pkg.re/essentialkaos/go-zabbix.v1
 ```
 
 For update to the latest stable release, do:
 
 ```
-go get -u pkg.re/essentialkaos/zabbix.v1
+go get -u pkg.re/essentialkaos/go-zabbix.v1
 ```
 
 ### Zabbix version support
@@ -44,13 +43,14 @@ go get -u pkg.re/essentialkaos/zabbix.v1
 | `2.x`          | No             |
 | `3.x`          | Yes (_Full_)   |
 | `4.x`          | Yes (_Full_)   |
+| `5.x`          | Yes (_Full_)   |
 
 ### Build Status
 
 | Branch | Status |
 |--------|--------|
-| `master` | [![Build Status](https://travis-ci.com/essentialkaos/zabbix.svg?branch=master)](https://travis-ci.com/essentialkaos/zabbix) |
-| `develop` | [![Build Status](https://travis-ci.com/essentialkaos/zabbix.svg?branch=develop)](https://travis-ci.com/essentialkaos/zabbix) |
+| `master` | [![Build Status](https://travis-ci.com/essentialkaos/go-zabbix.svg?branch=master)](https://travis-ci.com/essentialkaos/go-zabbix) |
+| `develop` | [![Build Status](https://travis-ci.com/essentialkaos/go-zabbix.svg?branch=develop)](https://travis-ci.com/essentialkaos/go-zabbix) |
 
 ### License
 
