@@ -6,6 +6,7 @@
   <a href="https://travis-ci.com/essentialkaos/go-zabbix"><img src="https://travis-ci.com/essentialkaos/go-zabbix.svg"></a>
   <a href="https://github.com/essentialkaos/go-zabbix/actions?query=workflow%3ACodeQL"><img src="https://github.com/essentialkaos/go-zabbix/workflows/CodeQL/badge.svg" /></a>
   <a href='https://coveralls.io/github/essentialkaos/go-zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/go-zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <a href="https://codebeat.co/projects/github-com-essentialkaos-go-zabbix-master"><img alt="codebeat badge" src="https://codebeat.co/badges/e3257f5f-8f63-4d80-92d0-e083713efbed" /></a>
   <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
 </p>
 
