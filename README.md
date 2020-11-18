@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://pkg.go.dev/github.com/essentialkaos/go-zabbix"><img src="https://pkg.go.dev/badge/github.com/essentialkaos/go-zabbix" /></a>
   <a href="https://goreportcard.com/report/github.com/essentialkaos/go-zabbix"><img src="https://goreportcard.com/badge/github.com/essentialkaos/go-zabbix"></a>
-  <a href="https://travis-ci.com/essentialkaos/go-zabbix"><img src="https://travis-ci.com/essentialkaos/go-zabbix.svg"></a>
+  <a href="https://github.com/essentialkaos/go-zabbix/actions"><img src="https://github.com/essentialkaos/go-zabbix/workflows/CI/badge.svg" alt="GitHub Actions Status" /></a>
   <a href="https://github.com/essentialkaos/go-zabbix/actions?query=workflow%3ACodeQL"><img src="https://github.com/essentialkaos/go-zabbix/workflows/CodeQL/badge.svg" /></a>
   <a href='https://coveralls.io/github/essentialkaos/go-zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/go-zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="https://codebeat.co/projects/github-com-essentialkaos-go-zabbix-master"><img alt="codebeat badge" src="https://codebeat.co/badges/e3257f5f-8f63-4d80-92d0-e083713efbed" /></a>
@@ -50,8 +50,8 @@ go get -u pkg.re/essentialkaos/go-zabbix.v1
 
 | Branch | Status |
 |--------|--------|
-| `master` | [![Build Status](https://travis-ci.com/essentialkaos/go-zabbix.svg?branch=master)](https://travis-ci.com/essentialkaos/go-zabbix) |
-| `develop` | [![Build Status](https://travis-ci.com/essentialkaos/go-zabbix.svg?branch=develop)](https://travis-ci.com/essentialkaos/go-zabbix) |
+| `master` | [![CI](https://github.com/essentialkaos/go-zabbix/workflows/CI/badge.svg?branch=master)](https://github.com/essentialkaos/go-zabbix/actions) |
+| `develop` | [![CI](https://github.com/essentialkaos/go-zabbix/workflows/CI/badge.svg?branch=develop)](https://github.com/essentialkaos/go-zabbix/actions) |
 
 ### License
 
