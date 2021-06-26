@@ -1,12 +1,12 @@
 <p align="center"><a href="#readme"><img src="https://gh.kaos.st/go-zabbix.svg"/></a></p>
 
 <p align="center">
-  <a href="https://pkg.re/essentialkaos/go-zabbix.v1?docs"><img src="https://gh.kaos.st/godoc.svg" alt="PkgGoDev"></a>
-  <a href="https://goreportcard.com/report/github.com/essentialkaos/go-zabbix"><img src="https://goreportcard.com/badge/github.com/essentialkaos/go-zabbix"></a>
-  <a href="https://github.com/essentialkaos/go-zabbix/actions"><img src="https://github.com/essentialkaos/go-zabbix/workflows/CI/badge.svg" alt="GitHub Actions Status" /></a>
-  <a href="https://github.com/essentialkaos/go-zabbix/actions?query=workflow%3ACodeQL"><img src="https://github.com/essentialkaos/go-zabbix/workflows/CodeQL/badge.svg" /></a>
-  <a href='https://coveralls.io/github/essentialkaos/go-zabbix?branch=master'><img src='https://coveralls.io/repos/github/essentialkaos/go-zabbix/badge.svg?branch=master' alt='Coverage Status' /></a>
-  <a href="https://codebeat.co/projects/github-com-essentialkaos-go-zabbix-master"><img alt="codebeat badge" src="https://codebeat.co/badges/e3257f5f-8f63-4d80-92d0-e083713efbed" /></a>
+  <a href="https://kaos.sh/g/go-zabbix.v1"><img src="https://gh.kaos.st/godoc.svg" alt="PkgGoDev" /></a>
+  <a href="https://kaos.sh/r/go-zabbix"><img src="https://kaos.sh/r/go-zabbix.svg" alt="GoReportCard" /></a>
+  <a href="https://kaos.sh/w/go-zabbix/ci"><img src="https://kaos.sh/w/go-zabbix/ci.svg" alt="GitHub Actions CI Status" /></a>
+  <a href="https://kaos.sh/w/go-zabbix/codeql"><img src="https://kaos.sh/w/go-zabbix/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
+  <a href="https://kaos.sh/c/go-zabbix"><img src="https://kaos.sh/c/go-zabbix.svg" alt="Coverage Status" /></a>
+  <a href="https://kaos.sh/b/go-zabbix"><img src="https://kaos.sh/b/e3257f5f-8f63-4d80-92d0-e083713efbed.svg" alt="Codebeat badge" /></a>
   <a href="#license"><img src="https://gh.kaos.st/apache2.svg"></a>
 </p>
 
@@ -18,16 +18,16 @@
 
 ### Installation
 
-Make sure you have a working Go 1.14+ workspace (_[instructions](https://golang.org/doc/install)_), then:
+Make sure you have a working Go 1.15+ workspace (_[instructions](https://golang.org/doc/install)_), then:
 
 ```
-go get pkg.re/essentialkaos/go-zabbix.v1
+go get -d pkg.re/essentialkaos/go-zabbix.v1
 ```
 
 For update to the latest stable release, do:
 
 ```
-go get -u pkg.re/essentialkaos/go-zabbix.v1
+go get -d -u pkg.re/essentialkaos/go-zabbix.v1
 ```
 
 ### Zabbix version support
@@ -44,8 +44,8 @@ go get -u pkg.re/essentialkaos/go-zabbix.v1
 
 | Branch | Status |
 |--------|--------|
-| `master` | [![CI](https://github.com/essentialkaos/go-zabbix/workflows/CI/badge.svg?branch=master)](https://github.com/essentialkaos/go-zabbix/actions) |
-| `develop` | [![CI](https://github.com/essentialkaos/go-zabbix/workflows/CI/badge.svg?branch=develop)](https://github.com/essentialkaos/go-zabbix/actions) |
+| `master` | [![CI](https://kaos.sh/w/go-zabbix/ci.svg?branch=master)](https://kaos.sh/w/go-zabbix/ci?query=branch:master) |
+| `develop` | [![CI](https://kaos.sh/w/go-zabbix/ci.svg?branch=develop)](https://kaos.sh/w/go-zabbix/ci?query=branch:develop) |
 
 ### License
 
