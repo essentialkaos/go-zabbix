@@ -1,7 +1,7 @@
 <p align="center"><a href="#readme"><img src="https://gh.kaos.st/go-zabbix.svg"/></a></p>
 
 <p align="center">
-  <a href="https://kaos.sh/g/go-zabbix.v1"><img src="https://gh.kaos.st/godoc.svg" alt="PkgGoDev" /></a>
+  <a href="https://kaos.sh/g/go-zabbix"><img src="https://gh.kaos.st/godoc.svg" alt="PkgGoDev" /></a>
   <a href="https://kaos.sh/r/go-zabbix"><img src="https://kaos.sh/r/go-zabbix.svg" alt="GoReportCard" /></a>
   <a href="https://kaos.sh/w/go-zabbix/ci"><img src="https://kaos.sh/w/go-zabbix/ci.svg" alt="GitHub Actions CI Status" /></a>
   <a href="https://kaos.sh/w/go-zabbix/codeql"><img src="https://kaos.sh/w/go-zabbix/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
@@ -18,16 +18,16 @@
 
 ### Installation
 
-Make sure you have a working Go 1.16+ workspace (_[instructions](https://golang.org/doc/install)_), then:
+Make sure you have a working Go 1.17+ workspace (_[instructions](https://golang.org/doc/install)_), then:
 
 ```
-go get -d pkg.re/essentialkaos/go-zabbix.v1
+go get -d github.com/essentialkaos/go-zabbix
 ```
 
 For update to the latest stable release, do:
 
 ```
-go get -d -u pkg.re/essentialkaos/go-zabbix.v1
+go get -d -u github.com/essentialkaos/go-zabbix
 ```
 
 ### Zabbix version support
@@ -39,6 +39,7 @@ go get -d -u pkg.re/essentialkaos/go-zabbix.v1
 | `3.x`          | Yes (_Full_)   |
 | `4.x`          | Yes (_Full_)   |
 | `5.x`          | Yes (_Full_)   |
+| `6.x`          | Yes (_Full_)   |
 
 ### Build Status
 
