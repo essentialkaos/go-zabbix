@@ -18,16 +18,10 @@
 
 ### Installation
 
-Make sure you have a working Go 1.17+ workspace (_[instructions](https://golang.org/doc/install)_), then:
+Make sure you have a working Go 1.19+ workspace (_[instructions](https://golang.org/doc/install)_), then:
 
 ```
-go get -d github.com/essentialkaos/go-zabbix
-```
-
-For update to the latest stable release, do:
-
-```
-go get -d -u github.com/essentialkaos/go-zabbix
+go get -u github.com/essentialkaos/go-zabbix
 ```
 
 ### Zabbix version support
