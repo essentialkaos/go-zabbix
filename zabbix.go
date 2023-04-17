@@ -124,7 +124,7 @@ func (c *Client) Send() (Response, error) {
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 
-// connectToServer makes connetion to Zabbix server
+// connectToServer makes connection to Zabbix server
 func connectToServer(c *Client) (*net.TCPConn, error) {
 	if c.ConnectTimeout > 0 && c.dialer.Timeout != c.ConnectTimeout {
 		c.dialer.Timeout = c.ConnectTimeout
@@ -139,7 +139,7 @@ func connectToServer(c *Client) (*net.TCPConn, error) {
 	return conn.(*net.TCPConn), nil
 }
 
-// readFromConnection reads data fron connection
+// readFromConnection reads data from connection
 func readFromConnection(conn *net.TCPConn, buf []byte, timeout time.Duration) error {
 	if timeout > 0 {
 		conn.SetReadDeadline(time.Now().Add(timeout))
