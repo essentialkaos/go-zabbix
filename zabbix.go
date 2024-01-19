@@ -50,7 +50,7 @@ func NewClient(address, hostname string) (*Client, error) {
 // ////////////////////////////////////////////////////////////////////////////////// //
 
 // Add adds new metric to stack
-func (c *Client) Add(key string, value interface{}) *Metric {
+func (c *Client) Add(key string, value any) *Metric {
 	now := time.Now()
 	metric := &Metric{
 		id: len(c.data),
@@ -162,7 +162,7 @@ func writeToConnection(conn *net.TCPConn, data []byte, timeout time.Duration) er
 }
 
 // formatValue convert value to string
-func formatValue(v interface{}) string {
+func formatValue(v any) string {
 	switch t := v.(type) {
 	case float32:
 		return fmt.Sprintf("%.6f", t)
