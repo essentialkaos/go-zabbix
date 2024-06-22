@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://kaos.sh/g/go-zabbix"><img src=".github/images/godoc.svg"/></a>
-  <a href="https://kaos.sh/r/go-zabbix"><img src="https://kaos.sh/r/go-zabbix.svg" alt="GoReportCard" /></a>
   <a href="https://kaos.sh/w/go-zabbix/ci"><img src="https://kaos.sh/w/go-zabbix/ci.svg" alt="GitHub Actions CI Status" /></a>
   <a href="https://kaos.sh/w/go-zabbix/codeql"><img src="https://kaos.sh/w/go-zabbix/codeql.svg" alt="GitHub Actions CodeQL Status" /></a>
   <a href="https://kaos.sh/c/go-zabbix"><img src="https://kaos.sh/c/go-zabbix.svg" alt="Coverage Status" /></a>
@@ -10,19 +9,11 @@
   <a href="#license"><img src=".github/images/license.svg"/></a>
 </p>
 
-<p align="center"><a href="#installation">Installation</a> • <a href="#zabbix-version-support">Zabbix version support</a> • <a href="#ci-status">CI Status</a> • <a href="#license">License</a></p>
+<p align="center"><a href="#zabbix-version-support">Zabbix version support</a> • <a href="#ci-status">CI Status</a> • <a href="#license">License</a></p>
 
 <br/>
 
 `zabbix` is a Go package for sending metrics data to Zabbix Server 3+.
-
-### Installation
-
-Make sure you have a working Go 1.21+ workspace (_[instructions](https://go.dev/doc/install)_), then:
-
-```
-go get -u github.com/essentialkaos/go-zabbix
-```
 
 ### Zabbix version support
 
