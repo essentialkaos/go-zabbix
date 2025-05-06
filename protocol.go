@@ -87,12 +87,12 @@ func marshalMetrics(metrics []*Metric) []byte {
 // marshalMetric marshal metric data to JSON object
 func marshalMetric(buf *bytes.Buffer, metric *Metric) {
 	buf.WriteString("{")
-	buf.WriteString(fmt.Sprintf(`"host":%s,`, strconv.Quote(metric.Host)))
-	buf.WriteString(fmt.Sprintf(`"key":%s,`, strconv.Quote(metric.Key)))
-	buf.WriteString(fmt.Sprintf(`"value":%s,`, strconv.Quote(metric.Value)))
-	buf.WriteString(fmt.Sprintf(`"id":%d,`, metric.id))
-	buf.WriteString(fmt.Sprintf(`"clock":%d,`, metric.Clock))
-	buf.WriteString(fmt.Sprintf(`"ns":%d`, metric.NS))
+	fmt.Fprintf(buf, `"host":%s,`, strconv.Quote(metric.Host))
+	fmt.Fprintf(buf, `"key":%s,`, strconv.Quote(metric.Key))
+	fmt.Fprintf(buf, `"value":%s,`, strconv.Quote(metric.Value))
+	fmt.Fprintf(buf, `"id":%d,`, metric.id)
+	fmt.Fprintf(buf, `"clock":%d,`, metric.Clock)
+	fmt.Fprintf(buf, `"ns":%d`, metric.NS)
 	buf.WriteString("}")
 }
 
@@ -100,9 +100,7 @@ func marshalMetric(buf *bytes.Buffer, metric *Metric) {
 func genSessionID() string {
 	result := make([]byte, 32)
 
-	rand.Seed(time.Now().UTC().UnixNano())
-
-	for i := 0; i < 32; i++ {
+	for i := range 32 {
 		result[i] = symbols[rand.Intn(62)]
 	}
 
