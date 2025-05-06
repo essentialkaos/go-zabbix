@@ -58,21 +58,20 @@ func encodeMetrics(metrics []*Metric) []byte {
 
 // marshalMetrics marshals data to JSON object
 func marshalMetrics(metrics []*Metric) []byte {
-	var buf bytes.Buffer
+	buf := &bytes.Buffer{}
 
 	now := time.Now()
 	totalItems := len(metrics)
 
-	buf.WriteString("{")
-	buf.WriteString(`"request":"sender data",`)
-	buf.WriteString(fmt.Sprintf(`"session":"%s",`, genSessionID()))
-	buf.WriteString(fmt.Sprintf(`"clock":%d,`, now.Unix()))
-	buf.WriteString(fmt.Sprintf(`"ns":%d,`, now.Nanosecond()))
+	buf.WriteString(`{"request":"sender data",`)
+	fmt.Fprintf(buf, `"session":"%s",`, genSessionID())
+	fmt.Fprintf(buf, `"clock":%d,`, now.Unix())
+	fmt.Fprintf(buf, `"ns":%d,`, now.Nanosecond())
 
 	buf.WriteString(`"data":[`)
 
 	for index, metric := range metrics {
-		marshalMetric(&buf, metric)
+		marshalMetric(buf, metric)
 
 		if index+1 < totalItems {
 			buf.WriteRune(',')
