@@ -2,7 +2,7 @@ package zabbix
 
 // ////////////////////////////////////////////////////////////////////////////////// //
 //                                                                                    //
-//                         Copyright (c) 2024 ESSENTIAL KAOS                          //
+//                         Copyright (c) 2025 ESSENTIAL KAOS                          //
 //      Apache License, Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>     //
 //                                                                                    //
 // ////////////////////////////////////////////////////////////////////////////////// //
@@ -58,21 +58,20 @@ func encodeMetrics(metrics []*Metric) []byte {
 
 // marshalMetrics marshals data to JSON object
 func marshalMetrics(metrics []*Metric) []byte {
-	var buf bytes.Buffer
+	buf := &bytes.Buffer{}
 
 	now := time.Now()
 	totalItems := len(metrics)
 
-	buf.WriteString("{")
-	buf.WriteString(`"request":"sender data",`)
-	buf.WriteString(fmt.Sprintf(`"session":"%s",`, genSessionID()))
-	buf.WriteString(fmt.Sprintf(`"clock":%d,`, now.Unix()))
-	buf.WriteString(fmt.Sprintf(`"ns":%d,`, now.Nanosecond()))
+	buf.WriteString(`{"request":"sender data",`)
+	fmt.Fprintf(buf, `"session":"%s",`, genSessionID())
+	fmt.Fprintf(buf, `"clock":%d,`, now.Unix())
+	fmt.Fprintf(buf, `"ns":%d,`, now.Nanosecond())
 
 	buf.WriteString(`"data":[`)
 
 	for index, metric := range metrics {
-		marshalMetric(&buf, metric)
+		marshalMetric(buf, metric)
 
 		if index+1 < totalItems {
 			buf.WriteRune(',')
@@ -87,12 +86,12 @@ func marshalMetrics(metrics []*Metric) []byte {
 // marshalMetric marshal metric data to JSON object
 func marshalMetric(buf *bytes.Buffer, metric *Metric) {
 	buf.WriteString("{")
-	buf.WriteString(fmt.Sprintf(`"host":%s,`, strconv.Quote(metric.Host)))
-	buf.WriteString(fmt.Sprintf(`"key":%s,`, strconv.Quote(metric.Key)))
-	buf.WriteString(fmt.Sprintf(`"value":%s,`, strconv.Quote(metric.Value)))
-	buf.WriteString(fmt.Sprintf(`"id":%d,`, metric.id))
-	buf.WriteString(fmt.Sprintf(`"clock":%d,`, metric.Clock))
-	buf.WriteString(fmt.Sprintf(`"ns":%d`, metric.NS))
+	fmt.Fprintf(buf, `"host":%s,`, strconv.Quote(metric.Host))
+	fmt.Fprintf(buf, `"key":%s,`, strconv.Quote(metric.Key))
+	fmt.Fprintf(buf, `"value":%s,`, strconv.Quote(metric.Value))
+	fmt.Fprintf(buf, `"id":%d,`, metric.id)
+	fmt.Fprintf(buf, `"clock":%d,`, metric.Clock)
+	fmt.Fprintf(buf, `"ns":%d`, metric.NS)
 	buf.WriteString("}")
 }
 
@@ -100,9 +99,7 @@ func marshalMetric(buf *bytes.Buffer, metric *Metric) {
 func genSessionID() string {
 	result := make([]byte, 32)
 
-	rand.Seed(time.Now().UTC().UnixNano())
-
-	for i := 0; i < 32; i++ {
+	for i := range 32 {
 		result[i] = symbols[rand.Intn(62)]
 	}
 
